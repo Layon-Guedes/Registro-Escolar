@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Registro Escolar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Registro de Alunos e Emissão Fiscal</h1>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Nova Matrícula</h2>
+            <form id="form-matricula">
+                <h3>1. Dados do Responsável Financeiro (Nota Fiscal)</h3>
+                <div class="grid-form">
+                    <div class="campo col-2">
+                        <label for="resp-nome">Nome Completo *</label>
+                        <input type="text" id="resp-nome" required>
+                    </div>
+                    <div class="campo">
+                        <label for="resp-cpf">CPF *</label>
+                        <input type="text" id="resp-cpf" maxlength="14" placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="campo">
+                        <label for="resp-telefone">Telefone *</label>
+                        <input type="text" id="resp-telefone" maxlength="15" placeholder="(83) 99999-9999" required>
+                    </div>
+                    <div class="campo col-2">
+                        <label for="resp-email">E-mail (para envio da NF) *</label>
+                        <input type="email" id="resp-email" required>
+                    </div>
+                    <div class="campo">
+                        <label for="resp-cep">CEP *</label>
+                        <input type="text" id="resp-cep" maxlength="9" placeholder="58700-000" required>
+                    </div>
+                    <div class="campo col-2">
+                        <label for="resp-logradouro">Logradouro (Rua/Av.) *</label>
+                        <input type="text" id="resp-logradouro" required>
+                    </div>
+                    <div class="campo">
+                        <label for="resp-numero">Número *</label>
+                        <input type="text" id="resp-numero" required>
+                    </div>
+                    <div class="campo">
+                        <label for="resp-complemento">Complemento</label>
+                        <input type="text" id="resp-complemento" placeholder="Apto, Casa, Bloco...">
+                    </div>
+                    <div class="campo">
+                        <label for="resp-bairro">Bairro *</label>
+                        <input type="text" id="resp-bairro" required>
+                    </div>
+                    <div class="campo">
+                        <label for="resp-cidade">Cidade *</label>
+                        <input type="text" id="resp-cidade" value="Patos" required>
+                    </div>
+                    <div class="campo">
+                        <label for="resp-uf">UF *</label>
+                        <input type="text" id="resp-uf" maxlength="2" value="PB" required>
+                    </div>
+                </div>
+
+                <h3>2. Dados do Aluno</h3>
+                <div class="grid-form">
+                    <div class="campo col-2">
+                        <label for="aluno-nome">Nome Completo do Aluno *</label>
+                        <input type="text" id="aluno-nome" required>
+                    </div>
+                    <div class="campo">
+                        <label for="aluno-serie">Série *</label>
+                        <select id="aluno-serie" required>
+                            <option value="">Selecione...</option>
+                            <option value="Maternal">Maternal</option>
+                            <option value="Jardim I">Jardim I</option>
+                            <option value="Jardim II">Jardim II</option>
+                            <option value="1º Ano">1º Ano</option>
+                            <option value="2º Ano">2º Ano</option>
+                            <option value="3º Ano">3º Ano</option>
+                            <option value="4º Ano">4º Ano</option>
+                            <option value="5º Ano">5º Ano</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="aluno-turno">Turno *</label>
+                        <select id="aluno-turno" required>
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="aluno-mensalidade">Mensalidade (R$) *</label>
+                        <input type="number" id="aluno-mensalidade" step="0.01" placeholder="450.00" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primario">Salvar Matrícula</button>
+                <p id="mensagem-status" class="status"></p>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="cabecalho-lista">
+                <h2>Alunos Matriculados</h2>
+                <div class="filtro">
+                    <label for="filtro-serie">Filtrar por Série:</label>
+                    <select id="filtro-serie">
+                        <option value="">Todas as séries</option>
+                        <option value="Maternal">Maternal</option>
+                        <option value="Jardim I">Jardim I</option>
+                        <option value="Jardim II">Jardim II</option>
+                        <option value="1º Ano">1º Ano</option>
+                        <option value="2º Ano">2º Ano</option>
+                        <option value="3º Ano">3º Ano</option>
+                        <option value="4º Ano">4º Ano</option>
+                        <option value="5º Ano">5º Ano</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="tabela-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Série / Turno</th>
+                            <th>Responsável</th>
+                            <th>CPF</th>
+                            <th>Mensalidade</th>
+                            <th>Ação Fiscal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-alunos">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

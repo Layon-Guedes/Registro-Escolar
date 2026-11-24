@@ -3,6 +3,7 @@ const db = require('./db');
 
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
 
 // ROTA 1: Cadastrar Responsável + Aluno (POST)
 app.post('/matriculas', async (req, res) => {
